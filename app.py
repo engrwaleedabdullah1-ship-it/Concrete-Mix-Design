@@ -13,7 +13,7 @@ st.divider()
 
 # --- ACI 211.1 LOOKUP TABLES (Smart Background Data) ---
 # Target Strength (MPa) to W/C Ratio (Non-air-entrained)
-wc_ratio_table = {20: 0.69, 25: 0.61, 30: 0.54, 35: 0.47, 40: 0.42}
+wc_ratio_table = {10: 0.87, 15: 0.79, 20: 0.69, 25: 0.61, 30: 0.54, 35: 0.47, 40: 0.42}
 
 # Max Aggregate Size (mm) to Base Water Content (kg/m3) for 75-100mm slump
 water_content_table = {10.0: 228, 12.5: 216, 20.0: 205, 25.0: 193, 40.0: 181}
@@ -31,7 +31,8 @@ with st.form("mix_design_form"):
     
     with col1:
         st.subheader("1. Primary Requirements")
-        target_strength = st.selectbox("Target Compressive Strength (28 Days):", [20, 25, 30, 35, 40], index=1, format_func=lambda x: f"{x} MPa")
+        # Updated with 10 and 15 MPa (Index 3 makes 25 MPa the default)
+        target_strength = st.selectbox("Target Compressive Strength (28 Days):", [10, 15, 20, 25, 30, 35, 40], index=3, format_func=lambda x: f"{x} MPa")
         max_agg = st.selectbox("Maximum Aggregate Size:", [10.0, 12.5, 20.0, 25.0, 40.0], index=2, format_func=lambda x: f"{x} mm")
         slump_req = st.selectbox("Target Slump Range:", ["25 - 50 mm", "75 - 100 mm", "150 - 175 mm"], index=1)
         
